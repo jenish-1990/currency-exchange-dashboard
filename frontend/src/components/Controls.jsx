@@ -7,8 +7,10 @@ const DATE_RANGES = [
 ];
 
 const CURRENCY_OPTIONS = [
-  { key: 'USD', label: 'EUR/USD', color: '#2563eb' },
-  { key: 'CAD', label: 'EUR/CAD', color: '#16a34a' },
+  { key: 'EUR_USD', label: 'EUR/USD', color: '#2563eb' },
+  { key: 'USD_EUR', label: 'USD/EUR', color: '#dc2626' },
+  { key: 'EUR_CAD', label: 'EUR/CAD', color: '#16a34a' },
+  { key: 'CAD_EUR', label: 'CAD/EUR', color: '#f59e0b' },
 ];
 
 const Controls = ({ selectedCurrencies, onCurrencyToggle, dateRange, onDateRangeChange }) => {
