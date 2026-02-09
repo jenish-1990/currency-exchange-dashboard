@@ -1,8 +1,10 @@
+import { useMemo, useCallback } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import { ModuleRegistry } from 'ag-grid-community';
 import { ClientSideRowModelModule } from 'ag-grid-community';
 import { TextFilterModule } from 'ag-grid-community';
 import { NumberFilterModule } from 'ag-grid-community';
+import { GridStateModule } from 'ag-grid-community';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 import './RateTable.css';
@@ -11,7 +13,19 @@ ModuleRegistry.registerModules([
   ClientSideRowModelModule,
   TextFilterModule,
   NumberFilterModule,
+  GridStateModule,
 ]);
+
+const GRID_STATE_KEY = 'agGridState';
+
+const getSavedState = () => {
+  try {
+    const saved = localStorage.getItem(GRID_STATE_KEY);
+    return saved ? JSON.parse(saved) : undefined;
+  } catch {
+    return undefined;
+  }
+};
 
 const rateFormatter = (params) => {
   return params.value != null ? params.value.toFixed(6) : '';
@@ -34,6 +48,12 @@ const defaultColDef = {
 };
 
 const RateTable = ({ rowData, loading }) => {
+  const initialState = useMemo(() => getSavedState(), []);
+
+  const onStateUpdated = useCallback((event) => {
+    localStorage.setItem(GRID_STATE_KEY, JSON.stringify(event.state));
+  }, []);
+
   if (loading) {
     return (
       <div className="rate-table-container rate-table-loading">
@@ -50,6 +70,8 @@ const RateTable = ({ rowData, loading }) => {
           rowData={rowData}
           columnDefs={columnDefs}
           defaultColDef={defaultColDef}
+          initialState={initialState}
+          onStateUpdated={onStateUpdated}
         />
       </div>
     </div>
