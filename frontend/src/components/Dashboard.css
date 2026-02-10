@@ -1,16 +1,16 @@
 .dash-outer {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 48px 40px 64px;
+  padding: 48px 48px 64px;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 32px;
 }
 
 .dash-content {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 32px;
   transition: opacity 350ms ease, filter 350ms ease;
 }
 
@@ -136,7 +136,6 @@
   padding: 6px 14px;
   font-size: 0.75rem;
   font-weight: 500;
-  font-family: inherit;
   border-radius: 6px;
   border: 1px solid rgba(244, 63, 94, 0.3);
   background-color: rgba(244, 63, 94, 0.08);
@@ -151,11 +150,11 @@
 }
 
 .card-body {
-  padding: 28px;
+  padding: 32px;
 }
 
 .card-body-table {
-  padding: 0 16px 16px;
+  padding: 4px 20px 20px;
 }
 
 @media (max-width: 768px) {
@@ -168,7 +167,7 @@
   }
 
   .card-body-table {
-    padding: 0 12px 12px;
+    padding: 4px 14px 14px;
   }
 }
 
@@ -277,4 +276,9 @@
 
 .currency-pill-active:hover {
   background-color: rgba(59, 130, 246, 0.2);
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
 }

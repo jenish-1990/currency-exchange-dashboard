@@ -59,7 +59,7 @@ const chartOptions = {
       bodyColor: '#cbd5e1',
       borderColor: 'rgba(255, 255, 255, 0.1)',
       borderWidth: 1,
-      padding: { top: 10, bottom: 10, left: 14, right: 14 },
+      padding: 12,
       cornerRadius: 8,
       titleFont: { weight: 600, family: 'DM Sans', size: 14 },
       bodyFont: { family: 'DM Sans', size: 13 },
@@ -105,7 +105,7 @@ const chartOptions = {
     },
   },
   elements: {
-    line: { tension: 0.3, borderWidth: 2 },
+    line: { borderWidth: 2 },
     point: { radius: 0, hoverRadius: 5, hoverBorderWidth: 2, backgroundColor: '#1e293b' },
   },
   interaction: {

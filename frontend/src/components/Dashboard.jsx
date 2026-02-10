@@ -1,4 +1,4 @@
-import { useState, useMemo, useRef, useCallback } from 'react';
+import { useState, useMemo, useRef } from 'react';
 import useExchangeRates from '../hooks/useExchangeRates';
 import { toChartData, toGridRows } from '../utils/transformData';
 import RateChart from './RateChart';
@@ -58,9 +58,9 @@ const Dashboard = () => {
   const [hasFilters, setHasFilters] = useState(false);
   const gridRef = useRef(null);
 
-  const clearFilters = useCallback(() => {
+  const clearFilters = () => {
     gridRef.current?.api?.setFilterModel(null);
-  }, []);
+  };
 
   const endDate = formatDate(new Date());
   const startDate = getStartDate(dateRange);
@@ -91,7 +91,6 @@ const Dashboard = () => {
     if (!rates?.length) return null;
     const latest = rates[rates.length - 1];
     const first = rates[0];
-    if (!latest?.rates?.USD || !first?.rates?.USD) return null;
 
     const pairs = [
       { key: 'EUR_USD', rate: latest.rates.USD, start: first.rates.USD },

@@ -16,14 +16,14 @@
   --ag-header-font-weight: 600;
   --ag-borders: none;
   --ag-borders-critical: none;
+  --ag-cell-horizontal-border: none;
+  --ag-column-border: none;
   --ag-wrapper-border-radius: 0;
   --ag-cell-horizontal-padding: 16px;
   --ag-header-height: 44px;
   --ag-row-height: 44px;
   --ag-selected-row-background-color: rgba(59, 130, 246, 0.12);
   --ag-range-selection-border-color: #3b82f6;
-  --ag-cell-horizontal-border: none;
-  --ag-column-border: none;
   --ag-header-column-separator-display: none;
   --ag-header-column-resize-handle-display: none;
   --ag-icon-size: 14px;
@@ -32,34 +32,17 @@
   --ag-input-border-color: rgba(255, 255, 255, 0.12);
 }
 
-.ag-theme-alpine-dark.ag-dark-custom,
 .ag-theme-alpine-dark.ag-dark-custom .ag-root-wrapper {
-  background-color: transparent;
   border: none;
-  font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
-}
-
-.ag-theme-alpine-dark.ag-dark-custom .ag-body-viewport,
-.ag-theme-alpine-dark.ag-dark-custom .ag-center-cols-viewport,
-.ag-theme-alpine-dark.ag-dark-custom .ag-center-cols-container {
-  background-color: transparent;
 }
 
 .ag-theme-alpine-dark.ag-dark-custom .ag-header {
-  background-color: rgba(255, 255, 255, 0.04);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
-}
-
-.ag-theme-alpine-dark.ag-dark-custom .ag-header-cell {
-  color: #94a3b8;
 }
 
 .ag-theme-alpine-dark.ag-dark-custom .ag-header-cell-label {
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  font-size: 13px;
-  font-weight: 600;
 }
 
 .ag-theme-alpine-dark.ag-dark-custom .ag-header-cell:hover {
@@ -68,7 +51,6 @@
 
 .ag-theme-alpine-dark.ag-dark-custom .ag-row {
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  font-size: 14px;
 }
 
 .ag-theme-alpine-dark.ag-dark-custom .ag-cell {
@@ -113,10 +95,6 @@
 
 .ag-theme-alpine-dark.ag-dark-custom .ag-icon {
   color: #94a3b8;
-}
-
-.ag-theme-alpine-dark.ag-dark-custom .ag-row-selected {
-  background-color: rgba(59, 130, 246, 0.12);
 }
 
 .ag-theme-alpine-dark.ag-dark-custom .ag-horizontal-left-spacer,

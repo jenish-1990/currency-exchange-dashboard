@@ -99,11 +99,7 @@ describe('toGridRows', () => {
 
   it('rounds values to 6 decimal places', () => {
     const rows = toGridRows(MOCK_DATA);
-    const decimalPlaces = (n) => {
-      const str = n.toString();
-      return str.includes('.') ? str.split('.')[1].length : 0;
-    };
-    expect(decimalPlaces(rows[0].USD_EUR)).toBeLessThanOrEqual(6);
-    expect(decimalPlaces(rows[0].CAD_EUR)).toBeLessThanOrEqual(6);
+    expect(rows[0].USD_EUR.toString().split('.')[1].length).toBeLessThanOrEqual(6);
+    expect(rows[0].CAD_EUR.toString().split('.')[1].length).toBeLessThanOrEqual(6);
   });
 });

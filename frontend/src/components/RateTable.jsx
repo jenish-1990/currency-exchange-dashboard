@@ -1,4 +1,4 @@
-import { useMemo, useCallback, useRef, useEffect } from 'react';
+import { useMemo, useCallback, useRef } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import { ModuleRegistry } from 'ag-grid-community';
 import { ClientSideRowModelModule } from 'ag-grid-community';
@@ -69,22 +69,18 @@ const RateTable = ({ rowData, loading, gridRef, onFilterChange }) => {
   const initialState = useMemo(() => getSavedState(), []);
 
   const onStateUpdated = useCallback((event) => {
-    const { columnSizing, ...rest } = event.state.columnState || {};
-    const cleaned = { ...event.state, columnState: rest };
-    localStorage.setItem(GRID_STATE_KEY, JSON.stringify(cleaned));
+    const state = { ...event.state };
+    if (state.columnState) {
+      delete state.columnState.columnSizing;
+    }
+    localStorage.setItem(GRID_STATE_KEY, JSON.stringify(state));
   }, []);
 
-  const onFilterChanged = useCallback(() => {
+  const checkFilters = () => {
     if (!onFilterChange) return;
     const model = ref.current?.api?.getFilterModel();
     onFilterChange(model && Object.keys(model).length > 0);
-  }, [onFilterChange, ref]);
-
-  useEffect(() => {
-    if (!onFilterChange) return;
-    const model = ref.current?.api?.getFilterModel();
-    onFilterChange(model && Object.keys(model).length > 0);
-  }, [rowData]);
+  };
 
   if (loading) {
     return (
@@ -106,7 +102,7 @@ const RateTable = ({ rowData, loading, gridRef, onFilterChange }) => {
           defaultColDef={defaultColDef}
           initialState={initialState}
           onStateUpdated={onStateUpdated}
-          onFilterChanged={onFilterChanged}
+          onFilterChanged={checkFilters}
         />
       </div>
     </div>
