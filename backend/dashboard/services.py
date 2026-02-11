@@ -33,6 +33,7 @@ def fetch_exchange_rates(base, symbols, start_date, end_date):
         end = date.fromisoformat(end_date)
         today = date.today()
 
+        # ECB doesn't publish weekend rates, allow 3-day lag
         covers_start = bounds['earliest'] <= start + timedelta(days=3)
         up_to_date = end < today or bounds['latest'] >= today
 
@@ -83,4 +84,5 @@ def _rows_to_response(rows):
         grouped[key]['base'] = row.base_currency
         grouped[key]['rates'][row.target_currency] = float(row.rate)
 
+    # TODO: paginate for large ranges
     return [grouped[k] for k in sorted(grouped)]

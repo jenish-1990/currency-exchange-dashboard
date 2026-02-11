@@ -9,6 +9,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { formatDisplayDate } from '../utils/transformData';
 import './RateChart.css';
 
 ChartJS.register(
@@ -44,7 +45,7 @@ const crosshairPlugin = {
 const chartOptions = {
   responsive: true,
   maintainAspectRatio: false,
-  animation: { duration: 600, easing: 'easeInOutQuart' },
+  animation: { duration: 600 },
   transitions: {
     active: { animation: { duration: 200 } },
   },
@@ -69,11 +70,7 @@ const chartOptions = {
       callbacks: {
         title: (items) => {
           const label = items[0]?.label;
-          if (!label) return '';
-          const [y, m, d] = label.split('-');
-          return new Date(y, m - 1, d).toLocaleDateString('en-US', {
-            month: 'short', day: 'numeric', year: 'numeric',
-          });
+          return label ? formatDisplayDate(label) : '';
         },
       },
     },
@@ -86,11 +83,7 @@ const chartOptions = {
         maxRotation: 0,
         callback: function(value) {
           const label = this.getLabelForValue(value);
-          if (!label) return '';
-          const [y, m, d] = label.split('-');
-          return new Date(y, m - 1, d).toLocaleDateString('en-US', {
-            month: 'short', day: 'numeric', year: 'numeric',
-          });
+          return label ? formatDisplayDate(label) : '';
         },
       },
       grid: { color: 'rgba(255, 255, 255, 0.04)' },

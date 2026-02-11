@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import date, timedelta
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -28,8 +28,8 @@ def rates(request):
         )
 
     try:
-        start = datetime.strptime(start_date, '%Y-%m-%d').date()
-        end = datetime.strptime(end_date, '%Y-%m-%d').date()
+        start = date.fromisoformat(start_date)
+        end = date.fromisoformat(end_date)
     except ValueError:
         return Response(
             {'error': 'Invalid date format. Use YYYY-MM-DD'},

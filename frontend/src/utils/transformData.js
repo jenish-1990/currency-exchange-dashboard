@@ -1,11 +1,11 @@
-const LINE_COLORS = [
-  '#3b82f6',
-  '#10b981',
-  '#d946ef',
-  '#f59e0b',
-  '#8b5cf6',
-  '#06b6d4',
-];
+export const formatDisplayDate = (iso) => {
+  const [y, m, d] = iso.split('-');
+  return new Date(y, m - 1, d).toLocaleDateString('en-US', {
+    month: 'short', day: 'numeric', year: 'numeric',
+  });
+};
+
+const LINE_COLORS = ['#3b82f6', '#10b981', '#d946ef', '#f59e0b'];
 
 export const toChartData = (apiData, selectedCurrencies) => {
   if (!apiData || !apiData.length) {
@@ -26,7 +26,6 @@ export const toChartData = (apiData, selectedCurrencies) => {
     });
     colorIdx++;
 
-    // reverse rate
     datasets.push({
       label: `${currency}/${base}`,
       data: apiData.map(entry => {

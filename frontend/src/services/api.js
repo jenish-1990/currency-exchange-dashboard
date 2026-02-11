@@ -16,6 +16,7 @@ export const fetchRates = async (base, symbols, startDate, endDate) => {
   return response.data;
 };
 
+// TODO: currency picker
 export const fetchCurrencies = async () => {
   const response = await api.get('/currencies/');
   return response.data;

@@ -149,6 +149,35 @@
   border-color: rgba(244, 63, 94, 0.45);
 }
 
+.export-group {
+  display: flex;
+  gap: 6px;
+}
+
+.export-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 6px;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  background-color: rgba(59, 130, 246, 0.08);
+  color: #60a5fa;
+  cursor: pointer;
+  transition: background-color 150ms, border-color 150ms;
+}
+
+.export-btn:hover {
+  background-color: rgba(59, 130, 246, 0.18);
+  border-color: rgba(59, 130, 246, 0.5);
+}
+
+.export-btn svg {
+  flex-shrink: 0;
+}
+
 .card-body {
   padding: 32px;
 }
@@ -276,6 +305,25 @@
 
 .currency-pill-active:hover {
   background-color: rgba(59, 130, 246, 0.2);
+}
+
+.reset-btn {
+  margin-left: auto;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: transparent;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 150ms;
+}
+
+.reset-btn:hover {
+  background-color: rgba(244, 63, 94, 0.08);
+  border-color: rgba(244, 63, 94, 0.3);
+  color: #fb7185;
 }
 
 @keyframes fade-in {

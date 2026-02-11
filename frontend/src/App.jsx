@@ -1,12 +1,10 @@
 import Dashboard from './components/Dashboard';
 import './App.css';
 
-const App = () => {
+export default function App() {
   return (
     <div className="app-shell">
       <Dashboard />
     </div>
   );
-};
-
-export default App;
+}

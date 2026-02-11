@@ -19,7 +19,7 @@ const useExchangeRates = ({ base, symbols, startDate, endDate }) => {
         const data = await fetchRates(base, symbols, startDate, endDate);
         if (!cancelled) setRates(data);
       } catch (err) {
-        if (!cancelled) setError(err.response?.data?.error || 'Failed to fetch exchange rates');
+        if (!cancelled) setError(err.response?.data?.error || 'Could not load rates');
       } finally {
         if (!cancelled) setLoading(false);
       }
